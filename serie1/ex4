@@ -1,0 +1,43 @@
+1) 
+create procedure maxi1(pndept in number , max_sal out number)is
+begin 
+    select  MAX(salaire)into max_sal from emp where ndept = pndept ;
+end;
+/
+or 
+create procedure maxis(pndept in number , max_sal out number)is
+begin 
+    select  MAX(salaire)into max_sal from emp where ndept = pndept ;
+    dbms_output.put_line('salaire max du departement '||pndept||' est : '||max_sal);
+end;
+/
+
+2) select object_name from user_objects
+/
+
+3) desc user_source
+/
+
+select text from user_source where name = 'MAXI'
+/
+
+4) declare 
+    vsal number;
+begin
+    MAXI1(&ndept,vsal);
+    dbms_output.put_line('salaire max du departement  est : '||vsal);
+
+end;
+/ 
+or 
+declare 
+    vsal number;
+begin
+    MAXI(&ndept,vsal);
+end;
+/
+
+
+
+
+    
