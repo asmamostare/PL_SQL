@@ -13,8 +13,18 @@ insert into emp values ('amina' ,'asma', 'som where' , 15000 , 3)
 insert into emp values ('some' ,'one', 'som where' , 35000 , 3)
 /
 
-3) select MAX(salaire) from emp
+3) 
+
+set SERVEROUT on
 /
+DECLARE 
+    salaire_max NUMBER;
+begin
+    select MAX(salaire)into salaire_max from emp;
+    dbms_output.put_line('salaire max est : '||salaire_max);
+end;
+/
+
 
 commit
 /
