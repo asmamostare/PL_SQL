@@ -1,0 +1,19 @@
+commande:
+  host net start oracleservicexe
+  conn system /1234@ex
+  create  user asmaMostare identified by test quota unlimited on system;
+  grant create session, create table , create procedure to asmaMostare;
+  disc
+  conn asmamostare/test@xe
+  CREATE TABLE table_5 (nb_fois_5 varchar(10) , value int);
+  desc tabla5
+  start E:\pl\ex2
+  
+  
+  E:\pl\ex2 :
+    begin 
+      for i in 1..10 loop
+          insert into table_5 values ('5*'||i|| '=', 5*i);
+      end loop;
+  end;
+  /
