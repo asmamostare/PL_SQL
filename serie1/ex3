@@ -1,14 +1,20 @@
-1) CREATE TABLE EMP (nom varchar(10)    ,prenom varchar(10)    ,adresse varchar(10)    , salaire int , ndept int);
-2) CREATE TABLE EMP (nom varchar(10)    ,prenom varchar(10)    ,adresse varchar(10)    , salaire int , ndept int);
+1) CREATE TABLE EMP (nom varchar(10)    ,prenom varchar(10)    ,adresse varchar(10)    , salaire int , ndept int)
+/
+2)
+insert into emp values ('mostare' ,'asma', 'som where' , 15000 , 3)
+/
 
-insert into emp values ('mostare' ,'asma', 'som where' , 15000 , 3);
+insert into emp values ('jhon' ,'doe', 'som where' , 20000 , 3)
+/
 
-insert into emp values ('jhon' ,'doe', 'som where' , 20000 , 3);
+insert into emp values ('amina' ,'asma', 'som where' , 15000 , 3)
+/
 
-insert into emp values ('amina' ,'asma', 'som where' , 15000 , 3);
+insert into emp values ('some' ,'one', 'som where' , 35000 , 3)
+/
 
-insert into emp values ('some' ,'one', 'som where' , 35000 , 3);
+3) select MAX(salaire) from emp
+/
 
-3) select MAX(salaire) from emp;  
-
-commit;
+commit
+/
