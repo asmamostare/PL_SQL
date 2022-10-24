@@ -10,7 +10,7 @@ commande:
   start E:\pl\ex2
   
   
-  E:\pl\ex2 :
+  E:\pl\ex2.sql :
     begin 
       for i in 1..10 loop
           insert into table_5 values ('5*'||i|| '=', 5*i);
