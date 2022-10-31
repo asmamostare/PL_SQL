@@ -1,0 +1,38 @@
+set serverout on
+/
+
+declare 
+    type tcv is ref CURSOR;
+    c tcv;
+    vemp emp%rowtype;
+    vcompt_emp number;
+    vmoy_sal number ;
+    i int := 1;
+ 
+ begin
+open c for  select * from  emp ;
+fetch c into vemp;
+loop
+exit when  c%notfound;
+dbms_output.put_line('amp : ' ||i);
+dbms_output.put_line('nom : ' ||vemp.nom);
+dbms_output.put_line('prenom : ' ||vemp.prenom);
+dbms_output.put_line('salaire : ' ||vemp.salaire);
+i:=i+1;
+end loop;
+close c;
+
+open c for select count(nemp), avg(salaire) from emp; 
+LOOP
+fetch c into vcompt_emp, vmoy_sal;
+exit when  c%notfound;
+dbms_output.put_line ('nbre emp :'||vcompt_emp);
+dbms_output.put_line('moyen salaire :'|| vmoy_sal);
+close c;
+end loop;
+end;
+/
+
+
+
+
