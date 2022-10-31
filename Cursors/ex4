@@ -1,0 +1,23 @@
+
+set serverout on
+/
+
+declare 
+    cursor c(ndep emp.ndept%TYPE ) is select * from  emp where ndept = ndep ;
+vemp emp%rowtype;
+i number :=1;
+
+begin 
+open c(&ndep);
+loop
+fetch  c into vemp;
+exit when  c%notfound;
+dbms_output.put_line('amp : ' ||i);
+dbms_output.put_line('nom : ' ||vemp.nom);
+dbms_output.put_line('prenom : ' ||vemp.prenom);
+dbms_output.put_line('salaire : ' ||vemp.salaire);
+i:=i+1;
+end loop;
+end;
+/
+
