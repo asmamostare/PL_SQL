@@ -1,0 +1,20 @@
+create table emp ( nemp int primary key , nom varchar(50) , prenom varchar(50) , salaire int , nservice int);
+/
+set serverout on
+/
+
+declare 
+cursor c is select nom from  emp where ndept = 1 ;
+vnom emp.nom%type;
+i number :=1;
+
+begin 
+open c;
+loop
+fetch  c into vnom;
+exit when  c%notfound;
+dbms_output.put_line('nom : ' ||i|| ':'||vnom);
+i:=i+1;
+end loop;
+end;
+/
