@@ -17,3 +17,21 @@ end loop;
 end;
 /
 
+
+declare 
+    
+i number :=1;
+begin 
+for vemp in ( select * from  emp where ndept = &ndep) loop 
+
+dbms_output.put_line('amp : ' ||i);
+dbms_output.put_line('nom : ' ||vemp.nom);
+dbms_output.put_line('prenom : ' ||vemp.prenom);
+dbms_output.put_line('salaire : ' ||vemp.salaire);
+i:=i+1;
+end loop;
+end;
+/
+
+
+
