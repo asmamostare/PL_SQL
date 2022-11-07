@@ -22,4 +22,47 @@ Q4)
 drop trigger t1;
 Q5)
 
-create view 
+create view VEmps1 
+as
+select * from emps where nservice =1
+/
+
+Q6)
+select * from VEmps1;
+
+Q7) 
+insert into VEmps1 values (1,'mostare1' ,'asma2' , 15000 , 3,'agadir');
+Q8) 
+select * from emps;
+Q9)
+
+create view VEmps1 
+as
+select * from emps where nservice =1
+with check option;
+/
+
+Q10) 
+insert into VEmps1 values (1,'mostare1' ,'asma2' , 15000 , 2,'agadir');
+
+Q11) 
+create or replace trigger VEmps2T
+instead of insert on VEmps2
+for each row
+begin
+insert into emps values 
+   (:new.nemp , 
+   :new.nom, 
+   :new.prenom , 
+   :new.salaire , 
+   :new.nservice, 
+   :new.ville);
+end;
+/
+Q12) 
+insert into VEmps2 values (1,'mostare1' ,'asma2' , 15000 , 2,'agadir');
+
+
+
+
+
