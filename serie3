@@ -1,3 +1,6 @@
+CREATE TABLE EMP
+  as 
+  select * from mustapha.emp where 1=2;
 Q5)
 create or replace trigger insertion
 after insert on emp
