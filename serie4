@@ -86,15 +86,13 @@ end if;
 end;
 /
 
-
-
-
-
 ================================fin tp===================================
 create database link lienProf using 'xe';
 
-
 select * from mustapha.emps@lienProf;
+
+create synonym emp for mustapha.emp@lienprof;
+
 
 
 
