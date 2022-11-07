@@ -1,0 +1,25 @@
+Q1)
+CREATE TABLE emps(
+   nemp int primary key ,
+   nom varchar(10),
+   prenom varchar(10),
+   salaire int , 
+   nservice int ,
+   ville varchar(10)   
+);
+
+Q2)
+create or replace trigger t1
+after insert on emps
+for each row
+begin
+insert into mustapha.emps values (:new.nemp , UPPER(:new.nom), UPPER(:new.prenom) , :new.salaire , :new.nservice,:new.ville);
+end;
+/
+Q3)
+insert into emps values (1,'mostare' ,'asma' , 15000 , 3,'agadir');
+Q4)
+drop trigger t1;
+Q5)
+
+create view 
