@@ -1,0 +1,37 @@
+Q5)
+create or replace trigger insertion
+after insert on emp
+for each row
+begin
+insert into mustapha.emp values (:new.nemp , :new.nom, :new.prenom , :new.salaire , :new.ndept);
+end;
+/
+
+Q6) insert into emp values (1,'mostare' ,'asma' , 15000 , 3)
+
+Q7)
+create or replace trigger suppretion
+after delete on emp
+for each row
+begin
+DELETE FROM mustapha.emp WHERE nom= :old.nom;
+end;
+/
+
+delete from emp where nom = 'mostare';
+
+
+Q8)
+create or replace trigger modification
+after update on emp
+for each row
+begin
+UPDATE mustapha.emp
+SET nom = :new.nom ,prenom =  :new.prenom , salaire= :new.salaire , ndept= :new.ndept
+WHERE nom= :old.nom;
+end;
+/
+
+UPDATE mustapha.emp
+SET nom = 'mostare2' ,prenom =  'asma2', salaire= 15000, ndept= 3
+WHERE nom= 'mostare';
