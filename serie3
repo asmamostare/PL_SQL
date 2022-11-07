@@ -38,3 +38,26 @@ end;
 UPDATE mustapha.emp
 SET nom = 'mostare2' ,prenom =  'asma2', salaire= 15000, ndept= 3
 WHERE nom= 'mostare';
+Q9)
+drop trigger insertion;
+drop trigger suppretion;
+drop trigger modification;
+Q10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
