@@ -36,7 +36,7 @@ Q8)
 select * from emps;
 Q9)
 
-create view VEmps1 
+create or replace view VEmps2
 as
 select * from emps where nservice =1
 with check option;
@@ -61,7 +61,20 @@ end;
 /
 Q12) 
 insert into VEmps2 values (1,'mostare1' ,'asma2' , 15000 , 2,'agadir');
+Q13) 
+update vemps2 set nservice =3 where nservice=1;
+Q14) 
+UPDATE VEmps2
+SET nemp=:new.nemp,
+	nom=:new.nom,
+	prenom=:new.prenom,
+	salaire=:new.salaire,
+	nservice=:new.nservice,
+	ville=:new.ville
+WHERE nemp=:old.nemp;
 
+
+insert into VEmps2 values (1,'mostare1' ,'asma2' , 15000 , 2,'agadir');
 
 
 
