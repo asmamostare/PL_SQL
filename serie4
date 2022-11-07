@@ -63,15 +63,28 @@ Q12)
 insert into VEmps2 values (1,'mostare1' ,'asma2' , 15000 , 2,'agadir');
 Q13) 
 update vemps2 set nservice =3 where nservice=1;
-Q14) 
-UPDATE VEmps2
-SET nemp=:new.nemp,
-	nom=:new.nom,
-	prenom=:new.prenom,
-	salaire=:new.salaire,
-	nservice=:new.nservice,
-	ville=:new.ville
-WHERE nemp=:old.nemp;
+Q14)    
+create or replace trigger VEmps2T
+instead of insert on VEmps2
+for each row
+begin
+if inserting then
+	insert into emps values 
+	   (:new.nemp , 
+	   :new.nom, 
+	   :new.prenom , 
+	   :new.salaire , 
+	   :new.nservice, 
+	   :new.ville);
+elsif deleting then
+	DELETE FROM emps WHERE nservice=:old.nservice;
+elsif updating then
+	UPDATE mustapha.emp
+	SET nservice=:new.nservice
+	WHERE nservice=:old.nservice;
+end if;
+end;
+/
 
 
 insert into VEmps2 values (1,'mostare1' ,'asma2' , 15000 , 2,'agadir');
