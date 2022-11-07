@@ -44,28 +44,21 @@ drop trigger suppretion;
 drop trigger modification;
 Q10)
 
-Create trigger trigEmp
-After
+create or replace trigger general
+after
 insert or update or delete on emp
-For each row
-Begin
-If inserting then
-
-Insert into  mustapha.emp values(:new.nemp,:new.nom,:new.prenom,:new.salaire,:new.ndept);
-
-Elsif deleting then
-
-
-delete from mustapha.emp where nom=:old.nom;
-
-Elsif updating then
-
-Update mustapha.emp
-Set ndept=2
-    Where nom=:old.nom;
-
-End if;
-End;
+for each row
+begin
+if inserting then
+	insert into mustapha.emp values (:new.nemp,:new.nom,:new.prenom,:new.salaire,:new.ndept);
+elsif deleting then
+	DELETE FROM mustapha.emp WHERE nom=:old.nom;
+elsif updating then
+	UPDATE mustapha.emp
+	SET nom=:new.nom,prenom=:new.prenom,salaire=:new.salaire,ndept=:new.ndept
+	WHERE nom=:old.nom;
+end if;
+end;
 /
 
 
