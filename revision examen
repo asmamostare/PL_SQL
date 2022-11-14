@@ -16,3 +16,22 @@ insert into mustapha.emp@lienprof values (:new.nemp , :new.nom, :new.prenom , :n
 end;
 /
  
+8
+create or replace trigger suppretion
+after delete on emp
+for each row
+begin
+DELETE FROM mustapha.emp@lienprof WHERE nom= :old.nom;
+end;
+/
+
+9
+create or replace trigger modification
+after update on emp
+for each row
+begin
+UPDATE mustapha.emp@lienprof
+SET nom = :new.nom ,prenom =  :new.prenom , salaire= :new.salaire , ndept= :new.ndept
+WHERE nom= :old.nom;
+end;
+/
