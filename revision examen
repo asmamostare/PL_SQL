@@ -56,4 +56,10 @@ end;
 11
  SELECT * FROM mustapha.emp@lienprof union SELECT * FROM empLocal;
  
+ =======================================================================
+ testing
+ insert into empLocal values (1,'mostare' ,'asma' , 15000 , 3);
+ 
+ 
+ 
  
