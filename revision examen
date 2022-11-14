@@ -1,0 +1,7 @@
+1 conn system/1234
+2 create user asmamostare identified by test quota unlimited on system;
+3 grant create session, create table , create procedure, create database link, create trigger to asmaMostare;
+4 disc
+ conn asmamostare/test
+5 create database link lienProf using 'xe';
+6 
