@@ -52,3 +52,8 @@ WHERE nom=:old.nom;
 end if;
 end;
 /
+
+11
+ SELECT * FROM mustapha.emp@lienprof union SELECT * FROM empLocal;
+ 
+ 
