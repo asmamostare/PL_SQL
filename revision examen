@@ -18,7 +18,7 @@ end;
  
 8
 create or replace trigger suppretion
-after delete on emp
+after delete on empLocal
 for each row
 begin
 DELETE FROM mustapha.emp@lienprof WHERE nom= :old.nom;
@@ -27,11 +27,28 @@ end;
 
 9
 create or replace trigger modification
-after update on emp
+after update on empLocal
 for each row
 begin
 UPDATE mustapha.emp@lienprof
 SET nom = :new.nom ,prenom =  :new.prenom , salaire= :new.salaire , ndept= :new.ndept
 WHERE nom= :old.nom;
+end;
+/
+10
+create or replace trigger general
+after
+insert or update or delete on empLocal
+for each row
+begin
+if inserting then
+insert into mustapha.emp@lienprof values (:new.nemp,:new.nom,:new.prenom,:new.salaire,:new.ndept);
+elsif deleting then
+DELETE FROM mustapha.emp@lienprof WHERE nom=:old.nom;
+elsif updating then
+UPDATE mustapha.emp@lienprof
+SET nom=:new.nom,prenom=:new.prenom,salaire=:new.salaire,ndept=:new.ndept
+WHERE nom=:old.nom;
+end if;
 end;
 /
