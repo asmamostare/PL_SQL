@@ -4,7 +4,15 @@
 4 disc
  conn asmamostare/test
 5 create database link lienProf using 'xe';
-6 
- create synonym emp for mustapha.emp@lienprof at empLocal;
-7 grant create synonym to asmaMostare;
+6 grant create synonym to asmaMostare;
  create table empLocal as select * from mustapha.emp@lienprof where 1=2;
+7
+
+create or replace trigger insertion
+after insert on empLocal
+for each row
+begin
+insert into mustapha.emp@lienprof values (:new.nemp , :new.nom, :new.prenom , :new.salaire , :new.ndept);
+end;
+/
+ 
