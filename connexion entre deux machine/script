@@ -24,3 +24,6 @@ SQL> select * from mustapha.emp@lienprof union select * from bougraj2.emplocal@l
        100 achraf          outi                 10000          1
 
 8 rows selected.
+
+
+Remarque:il faut desactiver le PARE-FEU windows Defender
