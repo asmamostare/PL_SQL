@@ -5,3 +5,6 @@
  conn asmamostare/test
 5 create database link lienProf using 'xe';
 6 
+ create synonym emp for mustapha.emp@lienprof at empLocal;
+7 grant create synonym to asmaMostare;
+ create table empLocal as select * from mustapha.emp@lienprof where 1=2;
