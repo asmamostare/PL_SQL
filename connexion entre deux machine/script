@@ -1,0 +1,26 @@
+
+SQL> conn system/1234@xe
+Connected.
+SQL> conn system/1234@xe1
+Connected.
+SQL> conn asmamostare/test
+Connected.
+SQL> create database link lienYassine using 'xe1';
+
+Database link created.
+
+
+SQL> select * from mustapha.emp@lienprof union select * from bougraj2.emplocal@lienYassine;
+
+      NEMP NOM             PRENOM             SALAIRE      NDEPT
+---------- --------------- --------------- ---------- ----------
+         1 Kassogue        Issa                 13483         12
+         1 bougraj         yassine              20000          2
+         1 oumaima         charroud              2252         45
+         5 nadia           charroud              2252         45
+        13 zirar           hamza                 2000          2
+        18 Himmi           Zakaria              15000          3
+       100 Kassogue        Issa                 13483         12
+       100 achraf          outi                 10000          1
+
+8 rows selected.
