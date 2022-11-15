@@ -21,15 +21,20 @@ Reponses:
    4 disc
     conn asmamostare/test
    5 create database link lienProf using 'xe';
-   6 grant create synonym to asmaMostare;
-    create table empLocal as select * from mustapha.emp@lienprof where 1=2;
+   6 create table empLocal as select * from mustapha.emp@lienprof where 1=2;
    7
 
    create or replace trigger insertion
    after insert on empLocal
    for each row
    begin
-   insert into mustapha.emp@lienprof values (:new.nemp , :new.nom, :new.prenom , :new.salaire , :new.ndept);
+   insert into mustapha.emp@lienprof values (
+                                              :new.nemp , 
+                                              :new.nom, 
+                                              :new.prenom , 
+                                              :new.salaire , 
+                                              :new.ndept
+                                              );
    end;
    /
 
@@ -76,7 +81,10 @@ Remarque: il faut d'abord supprimer les trois triggers creer precedement < drop 
    11
     SELECT * FROM mustapha.emp@lienprof union SELECT * FROM empLocal;
     12 
-    -7 create synonym empDist for mustapha.emp@lienprof;
+    grant create synonym to asmaMostare;
+    
+    -7 
+    create synonym empDist for mustapha.emp@lienprof;
 
    11-  SELECT * FROM empDist union SELECT * FROM empLocal;
 =======================================================================
