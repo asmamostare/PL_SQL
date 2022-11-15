@@ -1,19 +1,28 @@
 Consignes de tps:
   1)connexion locale avec system
+  
   2)création d'un utilisateur qui porte votre nom
-  3)donner des droits pour sel connecter,
-  créer des tables, triggers, des procédures et des liens
+  
+  3)donner des droits pour sel connecter, créer des tables, triggers, des procédures et des liens
+  
   4)se connecter avec le nom de cet utilisateur
-  5)construire un lien vers ma base de données:
-  vous devez vous assurer que la connexion à distance marche
+  
+  5)construire un lien vers ma base de données: vous devez vous assurer que la connexion à distance marche
+  
   6)construire la table emp locale de nom empLocale de même schéma que la table emp distante
-  7)construire un trigger qui assure les insertions
-  à distance en emp distante à la suite des insertions locales en emplocale
+  
+  7)construire un trigger qui assure les insertions à distance en emp distante à la suite des insertions locales en emplocale
+  
   8)faire de même pour suppression
+  
   9)faire de meme pour modification
+  
   10)remplacer tous les triggers par un seul
+  
   11)faire une requête qui affiche à la fois le contenu de emplocale et celui de emp distante
+  
   12)repenser les questions 7 et 11 en utilisant un synonyme la table emp distante
+  
 Reponses:
    1 conn system/1234
    2 create user asmamostare identified by test quota unlimited on system;
@@ -28,7 +37,7 @@ Reponses:
    after insert on empLocal
    for each row
    begin
-   insert into mustapha.emp@lienprof values (
+    insert into mustapha.emp@lienprof values (
                                               :new.nemp , 
                                               :new.nom, 
                                               :new.prenom , 
@@ -43,7 +52,7 @@ Reponses:
    after delete on empLocal
    for each row
    begin
-   DELETE FROM mustapha.emp@lienprof WHERE nom= :old.nom;
+      DELETE FROM mustapha.emp@lienprof WHERE nom= :old.nom;
    end;
    /
 
@@ -52,9 +61,9 @@ Reponses:
    after update on empLocal
    for each row
    begin
-   UPDATE mustapha.emp@lienprof
-   SET nom = :new.nom ,prenom =  :new.prenom , salaire= :new.salaire , ndept= :new.ndept
-   WHERE nom= :old.nom;
+     UPDATE mustapha.emp@lienprof
+     SET nom = :new.nom ,prenom =  :new.prenom , salaire= :new.salaire , ndept= :new.ndept
+     WHERE nom= :old.nom;
    end;
    /
    10
@@ -66,21 +75,21 @@ Remarque: il faut d'abord supprimer les trois triggers creer precedement < drop 
    insert or update or delete on empLocal
    for each row
    begin
-   if inserting then
-   insert into mustapha.emp@lienprof values (:new.nemp,:new.nom,:new.prenom,:new.salaire,:new.ndept);
-   elsif deleting then
-   DELETE FROM mustapha.emp@lienprof WHERE nom=:old.nom;
-   elsif updating then
-   UPDATE mustapha.emp@lienprof
-   SET nom=:new.nom,prenom=:new.prenom,salaire=:new.salaire,ndept=:new.ndept
-   WHERE nom=:old.nom;
-   end if;
+     if inserting then
+       insert into mustapha.emp@lienprof values (:new.nemp,:new.nom,:new.prenom,:new.salaire,:new.ndept);
+     elsif deleting then
+       DELETE FROM mustapha.emp@lienprof WHERE nom=:old.nom;
+     elsif updating then
+       UPDATE mustapha.emp@lienprof
+       SET nom=:new.nom,prenom=:new.prenom,salaire=:new.salaire,ndept=:new.ndept
+       WHERE nom=:old.nom;
+     end if;
    end;
    /
 
    11
     SELECT * FROM mustapha.emp@lienprof union SELECT * FROM empLocal;
-    12 
+   12 
     grant create synonym to asmaMostare;
     
     -7 
