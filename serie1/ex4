@@ -11,19 +11,6 @@ begin
 end;
 /
 
-test :
-
-  1  declare
-  2   vsalaire emp.salaire%type;
-  3   begin
-  4    maxi1(3,vsalaire);
-  5    dbms_output.put_line('le salaire maximale est: ' ||vsalaire);
-  6* end;
-SQL> /
-le salaire maximale est: 34000
-
-
-
 2)  select object_name , object_type from user_objects;
 /
 
@@ -49,6 +36,19 @@ begin
 end;
 /
 
+5 SQL> var vsal number;
+
+SQL> call maxi1(3,:vsal);
+
+Call completed.
+
+SQL> print vsal;
+
+      VSAL
+----------
+     34000
+
+SQL>
 
 
 
