@@ -1,4 +1,9 @@
-1) CREATE TABLE EMP (nom varchar(10)    ,prenom varchar(10)    ,adresse varchar(10)    , salaire int , ndept int)
+1) CREATE TABLE EMP (nemp number primary key , 
+                     nom varchar(10),
+                     prenom varchar(10),
+                     adresse varchar(10), 
+                     salaire int,
+                     ndept int)
 /
 2)
 insert into emp values ('mostare' ,'asma', 'som where' , 15000 , 3)
