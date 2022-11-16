@@ -17,3 +17,23 @@ commande:
       end loop;
   end;
   /
+========================================================================================
+
+1)SQL> create table table_5 (nb varchar(10) , value number);
+
+Table created.
+
+2)
+SQL> ed
+Wrote file afiedt.buf
+
+  1  begin
+  2        for i in 1..10 loop
+  3            insert into table_5 values ('5*'||i|| '=', 5*i);
+  4        end loop;
+  5* end;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL>
