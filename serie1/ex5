@@ -1,0 +1,16 @@
+1)
+create or replace function sal_max return number is 
+	vsal number ;
+	vnemp emp.nemp%type;
+begin 
+	select nemp into vnemp from emp where salaire = ( select  MAX(salaire) from emp);
+	return vnemp;
+end;
+/
+2)
+begin
+  dbms_output.put_line(sal_max());
+end;
+
+3)
+////////////////
