@@ -8,9 +8,21 @@ or
 create procedure maxis(pndept in number , max_sal out number)is
 begin 
     select  MAX(salaire)into max_sal from emp where ndept = pndept ;
-    dbms_output.put_line('salaire max du departement '||pndept||' est : '||max_sal);
 end;
 /
+
+test :
+
+  1  declare
+  2   vsalaire emp.salaire%type;
+  3   begin
+  4    maxi1(3,vsalaire);
+  5    dbms_output.put_line('le salaire maximale est: ' ||vsalaire);
+  6* end;
+SQL> /
+le salaire maximale est: 34000
+
+
 
 2) select object_name from user_objects
 /
