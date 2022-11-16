@@ -24,7 +24,7 @@ le salaire maximale est: 34000
 
 
 
-2) select object_name from user_objects
+2)  select object_name , object_type from user_objects;
 /
 
 3) desc user_source
