@@ -17,13 +17,11 @@ end loop;
 end;
 /
 
-
 declare 
-    
+vemp emp%rowtype;
 i number :=1;
 begin 
 for vemp in ( select * from  emp where ndept = &ndep) loop 
-
 dbms_output.put_line('amp : ' ||i);
 dbms_output.put_line('nom : ' ||vemp.nom);
 dbms_output.put_line('prenom : ' ||vemp.prenom);
