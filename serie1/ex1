@@ -1,0 +1,17 @@
+2) SQL> conn system/asma
+Connected.
+
+4) SQL> create user Tp1rev identified by test quota unlimited on system ;
+
+User created.
+
+5) SQL> grant create session , create table to Tp1rev;
+
+Grant succeeded.
+
+6)
+SQL> disc
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+7)
+SQL> conn tp1rev/test
+Connected.
