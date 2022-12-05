@@ -1,0 +1,38 @@
+1 create  user asmaMostare identified by test quota unlimited on system;
+
+2 grant create session, create table , create procedure, create trigger to asmaMostare;
+
+3 create table client ( code int primary key , nom varchar(50) , ville varchar(50) );
+
+ insert into client values ( 1 , 'asma' , 'agadir');
+ insert into client values ( 2 , 'amina' , 'casablanca');
+ insert into client values ( 3 , 'med' , 'agadir');
+ insert into client values ( 4 , 'salma' , 'rabat');
+ insert into client values ( 5 , 'doe' , 'rabat');
+ insert into client values ( 6 , 'laila' , 'casablanca');
+ 
+4 create database link lProf using 'xe';
+
+------------------Copie des données d’une base à une autre : fragmentation horizantale ------------------
+
+
+  create table client_frag_h1 as select * from asmamostare.client@lprof where ville='agadir' ;
+5 select * from client_frag_h1;
+
+6 create table client_frag_h2 as select * from asmamostare.client@lprof where ville<>'agadir' ;
+
+7 select * from client_frag_h2;
+
+8 select * from client_frag_h2 union  select * from client_frag_h1;
+
+------------------Copie des données d’une base à une autre : fragmentation verticale ------------------
+
+1 create table client_frag_v1 as select code , nom from asmamostare.client@lprof;
+
+2 select * from client_frag_v1;
+
+3 create table client_frag_v2 as select code , ville from asmamostare.client@lprof;
+
+4 select * from client_frag_v2;
+
+5 select * from client_frag_v2 join client_frag_v1 using(code);
