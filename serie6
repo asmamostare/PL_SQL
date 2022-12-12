@@ -40,6 +40,10 @@ begin
         insert_client(10 , 'amal' , 'tata');
 end;
 
+5 CREATE SYNONYM insert_client_distant_syn FOR insert_client_distant@lprof;  
 
+6 begin
+        insert_client_distant_syn(11 , 'joe' , 'inzgane');
+end;
 
-
+------------------- Copie des données d’une base à une autre : réplication partielle --------------
