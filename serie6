@@ -48,16 +48,21 @@ end;
 
 1 copy to asmamostare/test@xe create commandeReplica using select * from commande;
 
+2  select * from commandereplica; 
+
+3 insert into commande values ( 8 , '' , '11');
+
+4 copy to asmamostare/test@xe replace commandeReplica using select * from commande;
+
+5 select * from COMMANDEREPLICA@lprof minus select * from COMMANDE;
+select * from commande minus select* from COMMANDEREPLICA@lprof;
 
 
+------------------ Copie des données d’une base à une autre : réplication partielle --------------------
 
+1 copy from asmamostare/test@xe create clientReplica using select * from client where ville= 'agadir;
 
-
-
-
-
-
-
+2 select * from clientReplica;
 
 
 
