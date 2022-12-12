@@ -1,0 +1,45 @@
+------------------ Utilisation des vues pour la transparence d’accès aux données à distance : --------------------------
+
+1 create table commande ( idCommande int primary key ,
+                          date date ,
+                          codeClient int);
+2 create view vueClient 
+as
+select * from client@lprof;
+3 insert into vueClient values ( 7 , 'yassine' , 'laayoune');
+
+4  select * from vueClient;
+
+5 insert into vueClient values ( 8 , 'hasna' , 'tanger');
+
+6 select * from client;
+
+7 update vueclient set nom = 'imane' where code = 8;
+
+8 select * from vueclient , commande where code = codeClient;
+
+------------------ Utilisation des procedure pour la transparence d’accès aux données à distance : --------------------------
+1 create or replace procedure insert_client_distant (pcode in number , pnom in varchar , padresse in varchar)is
+begin 
+    insert into vueClient values ( pcode , pnom , padresse);
+end;
+/
+
+2   begin
+        insert_client_distant(9 , 'amine' , 'casa');
+    end;
+3   
+create or replace procedure insert_client (pcode in number , pnom in varchar , padresse in varchar)is
+begin 
+    insert_client_distant@lprof(pcode , pnom , padresse);
+end;
+/
+
+4 
+begin
+        insert_client(10 , 'amal' , 'tata');
+end;
+
+
+
+
