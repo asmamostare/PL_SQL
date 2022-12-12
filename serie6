@@ -1,8 +1,6 @@
 ------------------ Utilisation des vues pour la transparence d’accès aux données à distance : --------------------------
 
-1 create table commande ( idCommande int primary key ,
-                          date date ,
-                          codeClient int);
+1 create table commande ( idCommande int primary key , date date ,codeClient int);
 2 create view vueClient 
 as
 select * from client@lprof;
@@ -47,3 +45,20 @@ end;
 end;
 
 ------------------- Copie des données d’une base à une autre : réplication partielle --------------
+
+1 copy to asmamostare/test@xe create commandeReplica using select * from commande;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
