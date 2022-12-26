@@ -19,6 +19,28 @@ SQL> insert into vm_client values (12 , 'laila','agadir');
 partie E
 
 2 create materialized view vm_client2
-refresh complete
+refresh complete on commit
+as
+select * from client;
+3  insert into client values (13 , 'laila','agadir');
+
+Partie F
+
+2create  materialized view log on client;
+
+create materialized view vm_client3
+refresh fast on demand
+as
+select * from client;
+4 
+ begin dbms_mview.refresh('vm_client3','f|c|?');
+  end;
+  
+ 5 select * from mlog$_client;
+ 
+ Partie G 
+1
+create materialized view vm_client4
+refresh fast on commit
 as
 select * from client;
