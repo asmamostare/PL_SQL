@@ -1,0 +1,24 @@
+partie D
+1 cREATE INDEX indexvm_name ON vm_client (nom)
+2 SQL> insert into vm_client values (12 , 'laila','agadir');
+insert into vm_client values (12 , 'laila','agadir')
+            *
+ERROR at line 1:
+ORA-01732: data manipulation operation not legal on this view
+
+3 drop materialized view vm_client;
+
+4 create materialized view vm_client
+for update as
+select * from client;
+5 
+SQL> insert into vm_client values (12 , 'laila','agadir');
+
+1 row created.
+
+partie E
+
+2 create materialized view vm_client2
+refresh complete
+as
+select * from client;
