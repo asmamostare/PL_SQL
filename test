@@ -29,7 +29,9 @@ select * from emp where ville='CASA'
 /
 
 15 execute  dbms_mview.refresh('vm1','c');
-16 
+16 create  materialized view vm13 refresh on commit 
+as 
+select * from emp;
 
 
 
