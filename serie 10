@@ -1,0 +1,37 @@
+1
+create type TypeEmp as object
+(Code number(4),
+Nom varchar(15),
+Prenom  varchar(15),
+SalaireEmp number(8,2),
+nservice  number(4))
+
+2
+Create table Emp of TypeEmp
+
+3 insert into emp values(1,'asma','mostare',13258,1)
+
+4 
+declare
+ e typeEmp;
+begin
+ e:=typeEmp(5,'Madi','Fatima',13258,1);
+ insert into emp values(e);
+end;
+/
+
+5  select * from emp;
+
+6 select value(e) from emp e;
+
+7 select e.object_value from emp e;
+
+8  select ref(e) from emp e;
+
+9 create materialized view vm_obj_emp of typeemp as select * from emp;
+
+10 select *  from vm_obj_emp ;
+
+11 select value(e) from vm_obj_emp e;
+
+12  select ref(v) from emp v;
