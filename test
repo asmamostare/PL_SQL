@@ -5,12 +5,17 @@ create user testAsma identified by test quota unlimited on system ;
 
 7 create table emp ( nemp int primary key , nom varchar(50) , prenom varchar(50) ,ville varchar(50) , salaire int , nservice int);
 
-insert into emp values ( 1 , 'asma' , 'mostare' , 'agadir' ,15645, 1);
-insert into emp values ( 2 , 'laila' , 'ha' ,'agadir' , 875875, 2);
-insert into emp values ( 3 , 'amina' , 'mostare', 'agadir'  , 157527645, 4);
+insert into emp values ( 4 , 'asma' , 'mostare' , 'agadir' ,15645, 1);
+insert into emp values ( 5 , 'asmaaa' , 'mostareaaa' ,'agadir' , 875875, 2);
+insert into emp values ( 6 , 'mostare ' , 'asmaaaa', 'agadir'  , 157527645, 4);
  8 CREATE SYNONYM system.synonym_asma_emp FOR emp;
 9 grant create materialized view  to testAsma;
 10 
 create materialized view vm1
 as 
 select * from emp where ville='agadir'
+11 begin 
+dbms_mview.refresh('vm1','c');
+end;
+
+12  call  dbms_mview.refresh('vm1','?');
