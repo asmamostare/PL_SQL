@@ -3,8 +3,8 @@ create user testAsma identified by test quota unlimited on system ;
 
 3 , 4 , 5 grant create session , create table , create synonym to testAsma;
 
-6 create table emp ( nemp int primary key , nom varchar(50) , prenom varchar(50) , salaire int , nservice int);
+7 create table emp ( nemp int primary key , nom varchar(50) , prenom varchar(50) ,ville varchar(50) , salaire int , nservice int);
 
-insert into emp values ( 1 , 'asma' , 'mostare' , 15645, 1);
-insert into emp values ( 2 , 'laila' , 'ha' , 875875, 2);
-insert into emp values ( 3 , 'amina' , 'mostare' , 157527645, 4);
+insert into emp values ( 1 , 'asma' , 'mostare' , 'agadir' ,15645, 1);
+insert into emp values ( 2 , 'laila' , 'ha' ,'agadir' , 875875, 2);
+insert into emp values ( 3 , 'amina' , 'mostare', 'agadir'  , 157527645, 4);
