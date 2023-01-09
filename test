@@ -24,7 +24,12 @@ end;
 /
 14 create materialized view vm12
 as 
-select * from emp where ville='CASA'
+select * from emp where ville='CASA' 
+
 /
 
 15 execute  dbms_mview.refresh('vm1','c');
+16 
+
+
+
