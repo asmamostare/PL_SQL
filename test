@@ -29,9 +29,12 @@ select * from emp where ville='CASA'
 /
 
 15 execute  dbms_mview.refresh('vm1','c');
-16 create  materialized view vm13 refresh on commit 
+16 alter table emp add constraint pk primary key(nemp) ;
+create  materialized view vm13 refresh on commit 
 as 
 select * from emp;
+
+17 
 
 
 
