@@ -8,3 +8,5 @@ create user testAsma identified by test quota unlimited on system ;
 insert into emp values ( 1 , 'asma' , 'mostare' , 'agadir' ,15645, 1);
 insert into emp values ( 2 , 'laila' , 'ha' ,'agadir' , 875875, 2);
 insert into emp values ( 3 , 'amina' , 'mostare', 'agadir'  , 157527645, 4);
+ 8 CREATE SYNONYM system.synonym_asma_emp FOR emp;
+9 grant create materialized view  to testAsma;
