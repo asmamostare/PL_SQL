@@ -41,7 +41,7 @@ commit ;
 as 
 select * from emp 
 /
-
+19  insert into vm14  values (11 , 'asmae' , 'mostare' , 'rabat' , 51646 ,5);
 
 
 
