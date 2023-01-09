@@ -11,9 +11,7 @@ insert into emp values ( 6 , 'mostare ' , 'asmaaaa', 'agadir'  , 157527645, 4);
  8 CREATE SYNONYM system.synonym_asma_emp FOR emp;
 9 grant create materialized view  to testAsma;
 10 
-create materialized view vm1
-as 
-select * from emp where ville='agadir'
+/
 11 begin 
 dbms_mview.refresh('vm1','c');
 end;
@@ -24,3 +22,9 @@ end;
 	dbms_mview.refresh_dependent(t,'vm1','?');
 end;
 /
+14 create materialized view vm12
+as 
+select * from emp where ville='CASA'
+/
+
+15 execute  dbms_mview.refresh('vm1','c');
