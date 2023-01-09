@@ -34,4 +34,10 @@ end;
 
 11 select value(e) from vm_obj_emp e;
 
-12  select ref(v) from emp v;
+13  select ref(v) from emp v;
+
+14   alter table emp add   PRIMARY KEY (code); 
+create materialized view log on emp;
+
+15 
+
