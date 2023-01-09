@@ -35,10 +35,13 @@ as
 select * from emp;
 
 17  insert into testasma.emp  values (10 , 'asmae' , 'mostare' , 'rabat' , 51646 ,5); 
-
 commit ;
 
-18 
+18 create materialized view vm14 for update
+as 
+select * from emp 
+/
+
 
 
 
