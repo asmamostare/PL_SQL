@@ -43,6 +43,6 @@ select * from emp
 /
 19  insert into vm14  values (11 , 'asmae' , 'mostare' , 'rabat' , 51646 ,5);
 
-
+20 Lorsqu’on crée une vue mat acceptant la maj n’affect pas la table master
 
 
