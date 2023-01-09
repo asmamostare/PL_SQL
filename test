@@ -19,3 +19,8 @@ dbms_mview.refresh('vm1','c');
 end;
 
 12  call  dbms_mview.refresh('vm1','?');
+ 13 declare t number;
+ begin
+	dbms_mview.refresh_dependent(t,'vm1','?');
+end;
+/
