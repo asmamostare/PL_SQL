@@ -1,4 +1,4 @@
 2  alter session set "_oracle_script"=true; 
 create user testAsma identified by test quota unlimited on system ;
 
-3 grant create session , create table , create synonym to testAsma;
+3 , 4 , 5 grant create session , create table , create synonym to testAsma;
