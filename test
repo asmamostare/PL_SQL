@@ -10,3 +10,7 @@ insert into emp values ( 2 , 'laila' , 'ha' ,'agadir' , 875875, 2);
 insert into emp values ( 3 , 'amina' , 'mostare', 'agadir'  , 157527645, 4);
  8 CREATE SYNONYM system.synonym_asma_emp FOR emp;
 9 grant create materialized view  to testAsma;
+10 
+create materialized view vm1
+as 
+select * from emp where ville='agadir'
