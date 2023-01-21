@@ -1,0 +1,65 @@
+Série N°8
+Rafraichissement batch pour une table
+ --1
+create materialized view vm1
+as
+select * from client;
+commit;
+
+create materialized view vm2
+as
+select * from client;
+commit;
+--2
+select * from vm1;
+select * from vm2;
+--3
+insert into client values (5698,'taha','marakech');
+commit;
+--4
+Declare
+T number;
+begin
+DBMS_MVIEW.REFRESH_DEPENDENT(t,'client','c');
+end;	1
+5.
+ 
+Rafraichissement batch pour plusieurs vues
+--1
+create materialized view v1
+for update as
+select * from client;
+
+create materialized view v2
+for update as
+select * from client;
+--2
+create materialized view v1m
+as
+select * from v1;
+commit;
+
+create materialized view v2m
+as
+select * from v2;
+commit;
+--3
+insert into v1 values (6000,'jana','fes');
+commit;
+begin dbms_mview.refresh('v1'); end;
+Declare
+T number;
+begin
+DBMS_MVIEW.REFRESH_DEPENDENT(t,'v1,v2','c');
+end;
+insert into v2 values (4555,'amine','casa');
+commit;
+begin dbms_mview.refresh('v2'); end;
+--4
+select * from v1m;
+select * from v2m;
+ 
+
+
+
+
