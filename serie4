@@ -64,27 +64,32 @@ insert into VEmps2 values (1,'mostare1' ,'asma2' , 15000 , 2,'agadir');
 Q13) 
 update vemps2 set nservice =3 where nservice=1;
 Q14)    
-create or replace trigger t2
-instead of insert on VEmps2
-for each row
-begin
-if inserting then
-	insert into emps values 
-	   (:new.nemp , 
-	   :new.nom, 
-	   :new.prenom , 
-	   :new.salaire , 
-	   :new.nservice, 
-	   :new.ville);
-elsif deleting then
-	DELETE FROM emps WHERE nservice=:old.nservice;
-elsif updating then
-	UPDATE emps
-	SET nservice=:new.nservice
-	WHERE nservice=:old.nservice;
-end if;
-end;
+CREATE OR REPLACE TRIGGER t2
+INSTEAD OF INSERT OR UPDATE OR DELETE ON VEmps2
+FOR EACH ROW
+BEGIN
+    IF INSERTING THEN
+        INSERT INTO emps
+        VALUES (:new.nemp , 
+                :new.nom, 
+                :new.prenom , 
+                :new.salaire , 
+                :new.nservice, 
+                :new.ville);
+    ELSIF UPDATING THEN
+        UPDATE emps
+        SET nom = :new.nom,
+            prenom = :new.prenom,
+            salaire = :new.salaire,
+            ville = :new.ville
+        WHERE nemp = :old.nemp;
+    ELSIF DELETING THEN
+        DELETE FROM emps
+        WHERE nemp = :old.nemp;
+    END IF;
+END;
 /
+
 
 ================================fin tp===================================
 create database link lienProf using 'xe';
